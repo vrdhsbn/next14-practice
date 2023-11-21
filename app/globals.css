@@ -1,1 +1,12 @@
 @layer reset, base, tokens, recipes, utilities;
+
+body {
+  background: #1c1c1c;
+  color: #ededed;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+a {
+  color: #3ecf8e;
+}
