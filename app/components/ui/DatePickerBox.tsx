@@ -15,7 +15,6 @@ const content = css({
   color: '#fff',
 })
 
-// カレンダー描画時にサーバとクライアントでIDが異なると警告が出ている
 export const DatePickerBox = () => {
   return (
     <Box>
