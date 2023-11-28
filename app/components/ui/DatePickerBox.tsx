@@ -4,41 +4,28 @@ import { DatePicker, Portal } from '@ark-ui/react'
 import { textInput } from '../model/Form'
 import { css } from '@/styled-system/css'
 
-// カレンダー部分、要スタイリング
-const positioner = css({
-  zIndex: 1000,
-})
-
-const content = css({
-  p: '16px',
-  background: '#333',
-  color: '#fff',
-})
-
 export const DatePickerBox = () => {
   return (
     <Box>
-      <DatePicker.Root id='date' name='date'>
+      <DatePicker.Root id='date' name='date' locale='ja'>
         <DatePicker.Control>
           <DatePicker.Input className={textInput} />
-          <DatePicker.Trigger>📅</DatePicker.Trigger>
+          <DatePicker.Trigger className={trigger}>📅</DatePicker.Trigger>
         </DatePicker.Control>
         <Portal>
           <DatePicker.Positioner className={positioner}>
             <DatePicker.Content className={content}>
-              <DatePicker.YearSelect />
-              <DatePicker.MonthSelect />
               <DatePicker.View view='day'>
                 {(api) => (
                   <>
-                    <DatePicker.ViewControl>
-                      <DatePicker.PrevTrigger>Prev</DatePicker.PrevTrigger>
+                    <DatePicker.ViewControl className={viewControl}>
+                      <DatePicker.PrevTrigger>＜</DatePicker.PrevTrigger>
                       <DatePicker.ViewTrigger>
                         <DatePicker.RangeText />
                       </DatePicker.ViewTrigger>
-                      <DatePicker.NextTrigger>Next</DatePicker.NextTrigger>
+                      <DatePicker.NextTrigger>＞</DatePicker.NextTrigger>
                     </DatePicker.ViewControl>
-                    <DatePicker.Table>
+                    <DatePicker.Table className={table}>
                       <DatePicker.TableHead>
                         <DatePicker.TableRow>
                           {api.weekDays.map((weekDay, id) => (
@@ -133,3 +120,31 @@ export const DatePickerBox = () => {
     </Box>
   )
 }
+
+const trigger = css({
+  ml: '8px',
+  cursor: 'pointer',
+})
+
+const positioner = css({
+  zIndex: 1000,
+})
+
+const content = css({
+  p: '16px',
+  background: '#333',
+  color: '#fff',
+})
+
+const viewControl = css({
+  display: 'flex',
+  justifyContent: 'space-between',
+})
+
+const table = css({
+  '& th': { padding: '4px', textAlign: 'center' },
+  '& td': { padding: '4px', textAlign: 'center' },
+  '& td button': { cursor: 'pointer' },
+  '& td:hover': { bg: '#666', borderRadius: '4px' },
+  '& td[aria-current="date"]': { borderBottom: 'solid 2px #3ecf8e' },
+})

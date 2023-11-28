@@ -15,7 +15,7 @@ export const formAction = async (formData: FormData) => {
     // フロントにエラーを表示するには？useFormStateを使えばできるみたい？
     console.log(errors)
   } else {
-    // await insertPost(formData)
+    await insertPost(formData)
     console.log('send!')
     revalidatePath('/thanks')
     redirect('/thanks')

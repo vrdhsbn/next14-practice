@@ -1,7 +1,6 @@
 import { sql } from '@vercel/postgres'
 
 // DBにフォーム送信データを挿入する
-// ToDo: バリデーション、サニタイズ
 export const insertPost = async (formData: FormData) => {
   const _name = formData.get('name')?.toString()
   const _kana = formData.get('kana')?.toString()

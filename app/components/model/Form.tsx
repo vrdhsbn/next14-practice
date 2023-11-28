@@ -1,4 +1,3 @@
-'use client'
 import { Box, Center, Grid, styled } from '@/styled-system/jsx'
 import { SubmitButton } from '../ui/SubmitButton'
 import { css } from '@/styled-system/css'
