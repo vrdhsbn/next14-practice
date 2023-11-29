@@ -23,6 +23,7 @@ export const SubmitButton = () => {
       }}
       _disabled={{
         border: 'solid 1px #999',
+        background: '#333',
         _hover: {
           background: '#333',
           cursor: 'not-allowed',
