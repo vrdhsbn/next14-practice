@@ -1,7 +1,8 @@
 import { styled } from '@/styled-system/jsx'
 import { css } from '@/styled-system/css'
+import { getPosts } from '../../libs/getPosts'
 
-export type postType = {
+type postType = {
   id: number
   name: string
   kana: string
@@ -10,7 +11,9 @@ export type postType = {
   receivemail: boolean
 }
 
-export const List = ({ posts }: { posts: postType[] }) => {
+export const List = async () => {
+  const posts = (await getPosts()) as postType[]
+
   return (
     <styled.table w={'100%'} mt={'10px'}>
       <thead>

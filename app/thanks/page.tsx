@@ -1,11 +1,9 @@
-import { Container, Box } from '@/styled-system/jsx'
+import { Container, Box, styled } from '@/styled-system/jsx'
 import { Heading } from '../components/ui/Heading'
-import { getPosts } from '../libs/getPosts'
-import { List, postType } from '../components/model/List'
+import { List } from '../components/model/List'
+import { Suspense } from 'react'
 
 export default async function Thanks() {
-  const posts = (await getPosts()) as postType[]
-
   return (
     <Container maxW={'600px'} py={'64px'}>
       <Heading>Thanks!</Heading>
@@ -19,7 +17,9 @@ export default async function Thanks() {
       </Box>
       <Box mt={'32px'} pt={'32px'} borderTop={'solid 1px #999'}>
         <Heading>送信履歴</Heading>
-        <List posts={posts} />
+        <Suspense fallback={<styled.p mt={'10px'}>Loading...</styled.p>}>
+          <List />
+        </Suspense>
       </Box>
     </Container>
   )
