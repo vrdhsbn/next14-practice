@@ -18,6 +18,7 @@ export default async function Thanks() {
         </p>
       </Box>
       <Box mt={'32px'} pt={'32px'} borderTop={'solid 1px #999'}>
+        <Heading>送信履歴</Heading>
         <List posts={posts} />
       </Box>
     </Container>

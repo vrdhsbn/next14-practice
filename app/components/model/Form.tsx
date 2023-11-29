@@ -1,16 +1,31 @@
+'use client'
 import { Box, Center, Grid, styled } from '@/styled-system/jsx'
 import { SubmitButton } from '../ui/SubmitButton'
 import { css } from '@/styled-system/css'
 import { SwitchBox } from '../ui/SwitchBox'
 import { DatePickerBox } from '../ui/DatePickerBox'
 import { formAction } from '@/app/utils/formAction'
+import { useFormState } from 'react-dom'
 
 export const Form = () => {
+  const initialState: Array<string> = []
+  const [errors, dispatch] = useFormState(formAction, initialState)
+
   return (
-    <form action={formAction}>
+    <form action={dispatch}>
       <Box mt={'8px'}>
         <styled.span color={'#f00'}>*</styled.span> は必須項目です
       </Box>
+      {
+        // エラーメッセージがあれば表示する
+        errors.length > 0 && (
+          <Box mt={'16px'} border={'solid 1px #f00'} p={'8px'} color={'#f00'}>
+            {errors.map((error, index) => (
+              <p key={index}>{error}</p>
+            ))}
+          </Box>
+        )
+      }
       <Grid
         gridTemplateColumns={'120px 1fr'}
         rowGap={'24px'}

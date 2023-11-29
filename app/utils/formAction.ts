@@ -4,16 +4,13 @@ import { redirect } from 'next/navigation'
 import { insertPost } from '../libs/insertPost'
 import { formValidation } from '../libs/formValidation'
 
-export const formAction = async (formData: FormData) => {
-  // これ全体をtry-catchで書けたらもうちょっとすっきりしそうな気がする
-
+export const formAction = async (state: Array<string>, formData: FormData) => {
   // バリデーション
   const errors = await formValidation(formData)
 
   // エラーがあればエラー表示、無ければDBに登録
   if (errors) {
-    // フロントにエラーを表示するには？useFormStateを使えばできるみたい？
-    console.log(errors)
+    return errors
   } else {
     await insertPost(formData)
     console.log('send!')

@@ -12,7 +12,7 @@ export type postType = {
 
 export const List = ({ posts }: { posts: postType[] }) => {
   return (
-    <styled.table w={'100%'}>
+    <styled.table w={'100%'} mt={'10px'}>
       <thead>
         <tr className={tableCellHeader}>
           <th>id</th>
