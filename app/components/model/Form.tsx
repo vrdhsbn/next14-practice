@@ -4,15 +4,15 @@ import { SubmitButton } from '../ui/SubmitButton'
 import { css } from '@/styled-system/css'
 import { SwitchBox } from '../ui/SwitchBox'
 import { DatePickerBox } from '../ui/DatePickerBox'
-import { formAction } from '@/app/utils/formAction'
+import { formAction } from '@/app/libs/formAction'
 import { useFormState } from 'react-dom'
 
 export const Form = () => {
   const initialState: Array<string> = []
-  const [errors, dispatch] = useFormState(formAction, initialState)
+  const [errors, action] = useFormState(formAction, initialState)
 
   return (
-    <form action={dispatch}>
+    <form action={action}>
       <Box mt={'8px'}>
         <styled.span color={'#f00'}>*</styled.span> は必須項目です
       </Box>
